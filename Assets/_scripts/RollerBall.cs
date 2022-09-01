@@ -7,7 +7,7 @@ public class RollerBall : MonoBehaviour
 {
     public float speed;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     private float movementX, movementY;
     private bool isActive;
@@ -28,7 +28,7 @@ public class RollerBall : MonoBehaviour
         movementY = movementVector.y;
     }
 
-    void OnFire()
+    void OnPause()
     {
         toggleActive(!isActive);
     }
