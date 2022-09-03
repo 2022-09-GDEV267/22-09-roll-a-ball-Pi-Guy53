@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class RollerBall : MonoBehaviour
 {
     public float speed;
+    public int minY;
 
     public Rigidbody rb;
 
@@ -14,10 +15,14 @@ public class RollerBall : MonoBehaviour
 
     private Vector3 currentAngularV, currentV;
 
+    private Vector3 spawnPoint;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         isActive = true;
+
+        spawnPoint = transform.position;
     }
 
     void OnMove(InputValue movementValue)
@@ -46,6 +51,14 @@ public class RollerBall : MonoBehaviour
         }
         else
         {
+            rb.angularVelocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
+        }
+
+        if(transform.position.y < minY)
+        {
+            transform.position = spawnPoint;
+
             rb.angularVelocity = Vector3.zero;
             rb.velocity = Vector3.zero;
         }

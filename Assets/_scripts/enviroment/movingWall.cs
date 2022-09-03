@@ -8,8 +8,21 @@ public class movingWall : MonoBehaviour
     public float speed;
     public float distance;
 
-    private bool goingForward;
+    public bool goingForward;
     private float t;
+
+    private void Start()
+    {
+        if(goingForward)
+        {
+            t = 0;
+        }
+        else
+        {
+            t = distance;
+        }
+    }
+
     private void Update()
     {
         wall.transform.position = transform.position + transform.forward * t;
