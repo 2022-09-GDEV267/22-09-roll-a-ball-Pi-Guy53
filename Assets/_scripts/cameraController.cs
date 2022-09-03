@@ -32,7 +32,7 @@ public class cameraController : MonoBehaviour
             {
                 if (!hits[i].collider.CompareTag("MainCamera"))
                 {
-                    transform.position = Vector3.Lerp(transform.position, hits[i].point, .5f * Time.deltaTime);
+                    transform.position = hits[i].point;
                 }
             }
         }
