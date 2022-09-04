@@ -26,7 +26,7 @@ public class cameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 rayPos = player.transform.position + (transform.up * 1);
+        Vector3 rayPos = player.transform.position + (Vector3.up * 1);
 
         hits = Physics.RaycastAll(rayPos, (player.transform.position + offset) - rayPos, originalDist + 10, ignoreLayer);
 
