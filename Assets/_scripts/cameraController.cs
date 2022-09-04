@@ -24,12 +24,18 @@ public class cameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        hits = Physics.RaycastAll(player.transform.position, (player.transform.position + offset) - player.transform.position, originalDist + 2);
+        Vector3 rayPos = player.transform.position + (transform.up * 1);
+
+        hits = Physics.RaycastAll(rayPos, (player.transform.position + offset) - rayPos, originalDist + 10);
+
+        print(hits.Length);
 
         if (hits.Length > 1)
         {
             for (int i = 0; i < hits.Length; i++)
             {
+                Debug.DrawLine(rayPos, hits[i].point, Color.red);
+
                 if (!hits[i].collider.CompareTag("MainCamera"))
                 {
                     transform.position = hits[i].point;
