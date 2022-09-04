@@ -28,14 +28,10 @@ public class cameraController : MonoBehaviour
 
         hits = Physics.RaycastAll(rayPos, (player.transform.position + offset) - rayPos, originalDist + 10);
 
-        print(hits.Length);
-
         if (hits.Length > 1)
         {
             for (int i = 0; i < hits.Length; i++)
             {
-                Debug.DrawLine(rayPos, hits[i].point, Color.red);
-
                 if (!hits[i].collider.CompareTag("MainCamera"))
                 {
                     transform.position = hits[i].point;
