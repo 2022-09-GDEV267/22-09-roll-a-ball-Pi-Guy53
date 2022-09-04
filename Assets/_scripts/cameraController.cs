@@ -11,6 +11,8 @@ public class cameraController : MonoBehaviour
 
     private float originalDist;
 
+    public LayerMask ignoreLayer;
+
     void Start()
     {
         player = GameObject.FindObjectOfType<RollerBall>().gameObject;
@@ -26,7 +28,7 @@ public class cameraController : MonoBehaviour
     {
         Vector3 rayPos = player.transform.position + (transform.up * 1);
 
-        hits = Physics.RaycastAll(rayPos, (player.transform.position + offset) - rayPos, originalDist + 10);
+        hits = Physics.RaycastAll(rayPos, (player.transform.position + offset) - rayPos, originalDist + 10, ignoreLayer);
 
         if (hits.Length > 1)
         {
