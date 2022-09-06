@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     public Text scoreTxt;
     public Text endTxt;
     public int winScore;
+    private int collectionCount;
 
     public GameObject collectionEffects;
 
@@ -23,6 +24,8 @@ public class ScoreManager : MonoBehaviour
 
         player = GameObject.FindObjectOfType<RollerBall>();
         collectionEffects.SetActive(false);
+
+        winScore = GameObject.FindObjectsOfType<PickUps>().Length;
     }
 
     public void collectableTouched(int v)
@@ -33,11 +36,14 @@ public class ScoreManager : MonoBehaviour
         collectionEffects.SetActive(true);
         collectionEffects.transform.position = transform.position;
 
+        collectionCount++;
+
         Invoke("resetEffects", .5f);
     }
 
     void resetEffects()
     {
+        CancelInvoke("resetEffects");
         collectionEffects.SetActive(false);
     }
 
@@ -45,7 +51,7 @@ public class ScoreManager : MonoBehaviour
     {
         scoreTxt.text = "Score: " + currentScore;
 
-        if(currentScore >= winScore)
+        if(collectionCount >= winScore)
         {
             endTxt.text = "You Win!";
             player.toggleActive(false);
