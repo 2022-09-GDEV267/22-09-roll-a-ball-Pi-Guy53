@@ -8,6 +8,8 @@ public class boostPad : MonoBehaviour
     private RollerBall player;
     public GameObject effects;
 
+    public bool resetPos = false;
+
     private Vector3 endPoint = Vector3.zero;
 
     void Start()
@@ -20,6 +22,11 @@ public class boostPad : MonoBehaviour
     {
         player.rb.velocity = Vector3.zero;
         player.rb.angularVelocity = Vector3.zero;
+
+        if (resetPos)
+        {
+            player.transform.position = transform.position;
+        }
 
         player.rb.AddForce(transform.up * boostValue, ForceMode.Impulse);
 

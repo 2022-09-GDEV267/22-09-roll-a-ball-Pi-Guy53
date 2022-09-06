@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour
     public Text endTxt;
     public int winScore;
 
+    public GameObject collectionEffects;
+
     private RollerBall player;
 
     private void Start()
@@ -20,12 +22,23 @@ public class ScoreManager : MonoBehaviour
         scoreM = this;
 
         player = GameObject.FindObjectOfType<RollerBall>();
+        collectionEffects.SetActive(false);
     }
 
     public void collectableTouched(int v)
     {
         currentScore += v;
         updateScoreing();
+
+        collectionEffects.SetActive(true);
+        collectionEffects.transform.position = transform.position;
+
+        Invoke("resetEffects", .5f);
+    }
+
+    void resetEffects()
+    {
+        collectionEffects.SetActive(false);
     }
 
     void updateScoreing()
