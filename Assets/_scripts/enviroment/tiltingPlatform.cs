@@ -48,5 +48,7 @@ public class tiltingPlatform : MonoBehaviour
         {
             transform.Rotate(0, 0, tiltSpeed * Time.deltaTime);
         }
+
+        transform.rotation = Quaternion.Euler(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);
     }
 }

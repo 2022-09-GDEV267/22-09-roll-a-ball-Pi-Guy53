@@ -31,12 +31,12 @@ public class ScoreManager : MonoBehaviour
     public void collectableTouched(int v)
     {
         currentScore += v;
+        collectionCount++;
+
         updateScoreing();
 
         collectionEffects.SetActive(true);
         collectionEffects.transform.position = transform.position;
-
-        collectionCount++;
 
         Invoke("resetEffects", .5f);
     }
