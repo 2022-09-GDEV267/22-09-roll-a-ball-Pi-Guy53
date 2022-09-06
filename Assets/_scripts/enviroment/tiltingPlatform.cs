@@ -10,7 +10,7 @@ public class tiltingPlatform : MonoBehaviour
     private float t = 0;
     public int tilt = 0;
 
-    void Update()
+    void Update() 
     {
         t += tiltSpeed * Time.deltaTime;
 
