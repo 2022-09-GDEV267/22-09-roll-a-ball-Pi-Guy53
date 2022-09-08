@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
 
     public Text scoreTxt;
     public Text endTxt;
+    public Text bestTxt;
     public int winScore;
     private int collectionCount;
 
@@ -19,7 +20,7 @@ public class ScoreManager : MonoBehaviour
 
     private bool counting;
 
-    float m = 0, s = 0;
+    float m, s;
 
     private void Start()
     {
@@ -30,11 +31,9 @@ public class ScoreManager : MonoBehaviour
         collectionEffects.SetActive(false);
 
         winScore = GameObject.FindObjectsOfType<PickUps>().Length;
-        s = 55;
+        s = 0;
+        m = 0;
         counting = true;
-
-        //TESTING
-        winScore = 2;
     }
 
     private void Update()

@@ -35,7 +35,7 @@ public class RollerBall : MonoBehaviour
 
     void OnPause()
     {
-        toggleActive(!isActive);
+        //toggleActive(!isActive);
     }
 
     private void FixedUpdate()
